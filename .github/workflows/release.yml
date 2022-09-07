@@ -9,5 +9,4 @@ jobs:
         steps:
             - name:
               run: |
-                  curl -X POST ${{ secrets.SLACK_WEBHOOK }} -H "Content-Type: application/json"
-                  --data '{"text": "new release ${{github.event.release.tag_name}} is out <${{github.event.release.html_url}}|check it out now>"}'
+                  curl -X POST ${{ secrets.SLACK_WEBHOOK }} -H "Content-Type: application/json" -d '{"text": "new release ${{github.event.release.tag_name}} is out <${{github.event.release.html_url}}|check it out now>"}'
