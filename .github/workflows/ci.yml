@@ -33,6 +33,11 @@ jobs:
             - name: build project
               if: github.event_name == 'push'
               run: npm run build
+            - name: upload artifact
+              uses: actions/upload-artifact@v3
+              with:
+                  name: build
+                  path: build
             - name: deploy to staging
               if: github.event_name == 'push'
               run: npx surge --project ./build --domain sweet-insurance.surge.sh
