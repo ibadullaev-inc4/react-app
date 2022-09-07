@@ -10,6 +10,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
+            - name: cache node_modules
+              user: actions/cache@v3
+              wit:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-key: |
+                      ${{ runner.os }}-node-
             - uses: actions/setup-node@v1
               with:
                   node-version: '12.x'
