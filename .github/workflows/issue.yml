@@ -9,4 +9,6 @@ jobs:
         steps:
             - name:
               run: |
-                  curl -X POST ${{ secrets.SLACK_WEBHOOK }} -H "Content-Type: application/json" -d '{"text": "new issue created"}'
+                  curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
+                  -H "Content-Type: application/json" \
+                  -d '{"text": "new issue created <${{github.event.issue.html_url}}|${{github.event.issue.title}}"}'
