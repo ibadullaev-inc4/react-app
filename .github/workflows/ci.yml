@@ -71,3 +71,9 @@ jobs:
             - name: deploy to prod
               if: github.event_name == 'push' && github.ref == 'refs/heads/main'
               run: npx surge --project ./build --domain white-anger.surge.sh
+
+            - name: upload coverage reports
+              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+              run: npx codecov
+              env:
+                  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
