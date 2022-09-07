@@ -79,7 +79,7 @@ jobs:
                   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
             - name: create gh issue
-              if: faliure() && github.event_name == 'pull_request'
+              if: failure() && github.event_name == 'pull_request'
               run: |
                   curl --request POST \
                   --url https://api.github.com/${{github.repository}}/issues \
