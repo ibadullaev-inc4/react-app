@@ -3,7 +3,6 @@ const github = require('@actions/github');
 // import * as core from "@actions/core";
 // import * as github from "@actions/github";
 
-
 try {
     const name = core.getInput('who-to-greet');
     console.log(`Hello, ${name}`);
